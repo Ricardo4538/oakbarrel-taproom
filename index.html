@@ -1,27 +1,308 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oak Barrel Tap Room – Coming Soon</title>
-<style>
+  <meta charset="UTF-8" />
+  <title>Oak Barrel Taproom | Coming Soon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050608;
+      --bg-soft: #111319;
+      --panel: #161921;
+      --accent: #d3a047;
+      --accent-soft: #f0d39a;
+      --text: #f4efe2;
+      --muted: #a39f92;
+      --border: #272b35;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-        margin: 0;
-        background: #1b0f07;
-        font-family: Georgia, serif;
-        text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top left, #1e222a 0, #050608 55%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 20px 14px;
+      -webkit-font-smoothing: antialiased;
     }
-    img {
-        width: 100%;
-        height: auto;
-        display: block;
+
+    .shell {
+      width: 100%;
+      max-width: 1040px;
+      background: radial-gradient(circle at top right, #252a35 0, #0b0d13 52%, #050608 100%);
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 0 26px 80px rgba(0,0,0,0.85);
+      padding: 22px 22px 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 32px;
+      overflow: hidden;
     }
-</style>
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #f7e4b7 0, #e4b96b 30%, #70451d 70%, #150c06 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #221409;
+    }
+
+    .brand-text-top {
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .brand-text-main {
+      font-size: 1rem;
+      font-weight: 650;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-main span {
+      margin-left: 6px;
+      font-weight: 500;
+      letter-spacing: .22em;
+    }
+
+    .btn-outline {
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      padding: 8px 18px;
+      font-size: .8rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      background: rgba(5,6,8,.85);
+      color: var(--accent-soft);
+    }
+
+    /* HERO */
+    .chip {
+      display: inline-flex;
+      gap: 6px;
+      background: rgba(5,6,8,.7);
+      border: 1px solid rgba(255,255,255,.06);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: .72rem;
+      margin-bottom: 12px;
+      letter-spacing: .12em;
+      color: var(--muted);
+    }
+
+    .chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg,#6df696,#2fd776);
+      box-shadow: 0 0 0 4px rgba(65,232,138,.18);
+    }
+
+    .coming {
+      display: inline-block;
+      border-radius: 999px;
+      border: 1px solid rgba(211,160,71,.7);
+      background: rgba(211,160,71,.15);
+      padding: 4px 12px;
+      font-size: .7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .soft { color:#e7e1d0; font-weight:600; }
+    .gold { color:var(--accent-soft); text-transform:uppercase; }
+
+    .hero-sub {
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 380px;
+      margin-bottom: 14px;
+    }
+
+    .phase {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .phase strong {
+      color: var(--accent-soft);
+    }
+
+    /* RIGHT */
+    .bar-panel {
+      background: radial-gradient(circle at top,#343b49 0,#181c23 45%,#07090f 100%);
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow:0 20px 48px rgba(0,0,0,.8);
+    }
+
+    .bar-shelf {
+      display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:16px;
+    }
+
+    .bottle {
+      height:32px;
+      border-radius:7px 7px 3px 3px;
+      background:linear-gradient(180deg,#f5e2b2,#d39d57 40%,#5b3520 100%);
+      box-shadow:0 4px 10px rgba(0,0,0,.6);
+    }
+
+    .tap-counter {
+      height:40px;
+      background:linear-gradient(135deg,#2a231f 0,#18110f 65%);
+      border-radius:12px;
+      position:relative;
+      box-shadow:0 14px 30px rgba(0,0,0,.8);
+      margin-bottom:6px;
+    }
+
+    .tap-row {
+      position:absolute;
+      inset:6px 12px auto 12px;
+      display:flex;
+      justify-content:space-between;
+    }
+
+    .tap {
+      width:18%;
+      height:18px;
+      border-radius:999px;
+      background:linear-gradient(180deg,#f8e2b0,#c7944d 45%,#48291a 100%);
+      box-shadow:0 3px 7px rgba(0,0,0,.55);
+    }
+
+    .tag-block {
+      font-size:.75rem;
+      color:var(--muted);
+    }
+
+    .tag-block strong {
+      color:var(--accent-soft);
+      font-weight:500;
+      display:block;
+    }
+
+    .footer-strip {
+      grid-column: 1 / -1;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top:1px solid rgba(255,255,255,.05);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:.78rem;
+    }
+
+  </style>
 </head>
+
 <body>
+  <main class="shell">
 
-<img src="ChatGPT Image oakbarrel-coming-soon.png">
+    <header>
+      <div class="brand-left">
+        <div class="brand-mark">OB</div>
+        <div>
+          <div class="brand-text-top">Taproom & Social House</div>
+          <div class="brand-text-main">OAK BARREL <span>TAPROOM</span></div>
+        </div>
+      </div>
 
+      <button class="btn-outline">Join Founders List</button>
+    </header>
+
+    <section>
+      <div class="chip"><span class="chip-dot"></span>Craft beer · Country vibes · Community</div>
+      <div class="coming">Coming Soon — Fresno / Clovis</div>
+
+      <h1>
+        <span class="soft">A neighborhood taproom</span>
+        <span class="gold">BUILT FOR REGULARS</span>
+      </h1>
+
+      <p class="hero-sub">
+        Craving a home base for cold pours and country energy? Same here.
+        <strong>Oak Barrel Taproom</strong> is where regulars, friends, and new visitors get
+        the same heavy pour and warm welcome.
+      </p>
+
+      <p class="phase">Phase 1: <strong>Brand & Foundation</strong></p>
+    </section>
+
+    <aside>
+      <div class="bar-panel">
+        <div class="bar-shelf">
+          <div class="bottle"></div><div class="bottle"></div><div class="bottle"></div>
+          <div class="bottle"></div><div class="bottle"></div>
+        </div>
+
+        <div class="tap-counter">
+          <div class="tap-row">
+            <div class="tap"></div><div class="tap"></div>
+            <div class="tap"></div><div class="tap"></div>
+          </div>
+        </div>
+
+        <div class="tag-block">
+          <span>Signature Vibe</span>
+          <strong>Pouring Country Strong</strong>
+        </div>
+
+        <div class="tag-block" style="margin-top:10px;">
+          <span>Founders Section</span>
+          <strong>12 Founder Mugs • Lifetime perks</strong>
+        </div>
+      </div>
+    </aside>
+
+    <div class="footer-strip">
+      <span>Oak Barrel Taproom · Central Valley, California</span>
+      <span>Brand Motto: <strong>Pouring Country Strong</strong></span>
+    </div>
+
+  </main>
 </body>
-</html
+</html>
