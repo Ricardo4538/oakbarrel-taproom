@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Oak Barrel Taproom | Coming Soon</title>
+  <title>Oak Barrel Taproom – Built for Regulars</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #050608;
-      --card: #111318;
-      --accent: #d3a047;
-      --accent-soft: #f0d39a;
-      --text: #f4efe2;
-      --muted: #a39f92;
-      --border: #2a2f3a;
+      --bg-main: #050609;
+      --bg-card: #111319;
+      --bg-card-soft: #161824;
+      --gold: #d9a441;
+      --gold-soft: #f3c669;
+      --text-main: #f5f5f5;
+      --text-muted: #b0b2bd;
+      --accent: #f5e2b8;
+      --radius-pill: 999px;
+      --radius-card: 18px;
+      --shadow-soft: 0 12px 28px rgba(0,0,0,0.6);
     }
 
     * {
@@ -22,498 +26,304 @@
     }
 
     body {
-      min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top left, #262b36 0, #050608 55%);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      padding: 20px 12px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #181b23 0, #050609 48%, #000 100%);
+      color: var(--text-main);
+      padding: 24px 16px 40px;
+      line-height: 1.5;
     }
 
     .page {
-      width: 100%;
-      max-width: 1120px;
-      background: radial-gradient(circle at top right, #252934 0, #080a10 55%);
-      border-radius: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      box-shadow: 0 26px 80px rgba(0, 0, 0, 0.85);
-      padding: 22px 24px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 26px;
+      max-width: 480px;
+      margin: 0 auto;
     }
 
-    /* NAV */
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-circle {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 20% 0, #f7e4b7 0, #e4b96b 30%, #70451d 70%, #150c06 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      color: #221409;
-      box-shadow: 0 0 0 1px rgba(0,0,0,0.6), 0 12px 24px rgba(0,0,0,0.7);
-    }
-
-    .nav-label-top {
-      font-size: 0.7rem;
+    .hero-kicker {
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-    }
-
-    .nav-label-main {
-      font-size: 1rem;
-      font-weight: 650;
       letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .nav-label-main span {
-      margin-left: 6px;
-      letter-spacing: 0.22em;
-      font-weight: 500;
-    }
-
-    .btn-outline {
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      padding: 8px 18px;
       font-size: 0.76rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-      background: rgba(5, 6, 8, 0.9);
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .btn-outline:hover {
-      background: var(--accent);
-      color: #201308;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
-    }
-
-    /* MAIN LAYOUT */
-
-    .main {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    /* LEFT HERO */
-
-    .eyebrow {
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      background: rgba(5, 6, 8, 0.9);
-      margin-bottom: 10px;
-    }
-
-    .chip-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #6df696, #2fd776);
-      box-shadow: 0 0 0 4px rgba(65, 232, 138, 0.18);
-    }
-
-    .coming-pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(211, 160, 71, 0.8);
-      background: rgba(211, 160, 71, 0.15);
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-      margin-bottom: 12px;
-    }
-
-    .hero-title {
-      font-size: clamp(2.1rem, 3.4vw, 2.7rem);
-      line-height: 1.1;
-      margin-bottom: 10px;
-    }
-
-    .hero-title span {
-      display: block;
-    }
-
-    .hero-soft {
-      color: #e7e1d0;
-      font-weight: 600;
-    }
-
-    .hero-gold {
-      color: var(--accent-soft);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .hero-sub {
-      font-size: 0.94rem;
-      color: var(--muted);
-      max-width: 420px;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    .hero-sub strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .btn-solid {
-      border-radius: 999px;
-      border: none;
-      padding: 10px 20px;
-      font-size: 0.86rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      background: var(--accent);
-      color: #1f1409;
-      font-weight: 600;
-    }
-
-    .btn-ghost {
-      border-radius: 999px;
-      padding: 10px 20px;
-      font-size: 0.86rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      border: 1px solid var(--accent);
-      background: transparent;
-      color: var(--accent-soft);
-    }
-
-    .phase-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .phase-note strong {
-      color: var(--accent-soft);
-      font-weight: 500;
-    }
-
-    /* RIGHT “BAR” PANEL */
-
-    .bar-card {
-      background: radial-gradient(circle at top, #343b49 0, #181c23 45%, #07090f 100%);
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 16px 14px 14px;
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.85);
-      max-width: 360px;
-      margin-left: auto;
-    }
-
-    .bar-shelves {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .bottle {
-      height: 30px;
-      border-radius: 7px 7px 3px 3px;
-      background: linear-gradient(180deg, #f5e2b2 0, #d39d57 40%, #5b3520 100%);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-      opacity: 0.94;
-    }
-
-    .tap-block {
-      height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #2a231f 0, #18110f 65%);
-      position: relative;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.85);
-      margin-bottom: 8px;
-    }
-
-    .tap-row {
-      position: absolute;
-      inset: 6px 12px auto 12px;
-      display: flex;
-      justify-content: space-between;
-      gap: 6px;
-    }
-
-    .tap {
-      flex: 1;
-      border-radius: 999px;
-      background: linear-gradient(180deg,#f8e2b0 0,#c7944d 45%,#48291a 100%);
-      box-shadow: 0 3px 7px rgba(0,0,0,0.55);
-    }
-
-    .tag-columns {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 0.76rem;
-      margin-top: 4px;
-    }
-
-    .tag-label {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.68rem;
-      color: var(--muted);
-      margin-bottom: 2px;
-    }
-
-    .tag-value {
-      color: var(--accent-soft);
-      font-weight: 500;
-    }
-
-    .founders-card {
-      margin-top: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: radial-gradient(circle at top left, rgba(211,160,71,0.18), rgba(5,6,8,0.96));
-      padding: 10px 12px;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .founders-title {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
+      color: var(--text-muted);
       margin-bottom: 4px;
     }
 
-    .founders-card strong {
-      color: var(--text);
+    .hero-heading-main {
+      font-size: 2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+
+    .hero-heading-main span {
       display: block;
-      margin-bottom: 2px;
     }
 
-    /* FOOTER */
+    .hero-heading-main span.gold {
+      color: var(--gold-soft);
+    }
 
-    .footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 10px;
-      margin-top: 8px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
+    .hero-copy {
+      margin-top: 14px;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+    }
+
+    .hero-copy strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* 5 golden buttons */
+    .tabs {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
       gap: 8px;
+    }
+
+    .tab-pill {
+      height: 34px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(145deg, #f7d27b, #d9a441);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.65);
+      border: 1px solid rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      text-align: center;
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #1b1409;
+      text-decoration: none;
+    }
+
+    .cta-row {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-main,
+    .btn-outline {
+      border-radius: var(--radius-pill);
+      padding: 14px 22px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-main {
+      background: linear-gradient(145deg, #f7d27b, #d9a441);
+      color: #1b1409;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold-soft);
+      border: 1px solid var(--gold);
+    }
+
+    .phase-card {
+      margin-top: 26px;
+      background: linear-gradient(145deg, #151821, #0c0d12);
+      border-radius: var(--radius-card);
+      padding: 18px 16px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .phase-label {
       font-size: 0.78rem;
-      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
     }
 
-    .footer strong {
-      color: var(--accent-soft);
-      font-weight: 500;
+    .phase-title {
+      font-size: 0.96rem;
+      color: var(--accent);
+      font-weight: 600;
     }
 
-    /* RESPONSIVE */
-
-    @media (max-width: 860px) {
-      .page {
-        padding: 18px 16px 16px;
-      }
-
-      .main {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 22px;
-      }
-
-      .bar-card {
-        margin: 0 auto;
-        max-width: 420px;
-      }
+    .phase-copy {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
     }
 
-    @media (max-width: 520px) {
+    .meta-row {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .meta-block {
+      background: rgba(0,0,0,0.28);
+      border-radius: 14px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .meta-heading {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.86rem;
+      color: var(--accent);
+    }
+
+    .founders-card {
+      background: linear-gradient(145deg, #1c1f2a, #13151f);
+      border-radius: 16px;
+      padding: 14px 14px 16px;
+      margin-top: 16px;
+      border: 1px solid rgba(243,198,105,0.35);
+    }
+
+    .founders-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 4px;
+    }
+
+    .founders-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .founders-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .founders-text strong {
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer .brand-line {
+      margin-bottom: 4px;
+    }
+
+    footer .motto {
+      color: var(--gold-soft);
+      font-weight: 600;
+    }
+
+    section.anchor {
+      scroll-margin-top: 80px;
+    }
+
+    @media (min-width: 768px) {
       body {
-        padding: 14px 10px;
+        padding-top: 40px;
       }
-
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .cta-row {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn-solid,
-      .btn-ghost {
-        width: 100%;
-        text-align: center;
+      .page {
+        max-width: 520px;
       }
     }
   </style>
 </head>
-
 <body>
   <div class="page">
-    <!-- NAV -->
-    <nav class="nav">
-      <div class="nav-left">
-        <div class="logo-circle">OB</div>
-        <div>
-          <div class="nav-label-top">Taproom &amp; Social House</div>
-          <div class="nav-label-main">
-            OAK BARREL <span>TAPROOM</span>
-          </div>
-        </div>
-      </div>
 
-      <button class="btn-outline" type="button">
-        Join Founders List
-      </button>
+    <header>
+      <div class="hero-kicker">Taproom</div>
+      <h1 class="hero-heading-main">
+        <span>Built For</span>
+        <span class="gold">Regulars</span>
+      </h1>
+      <p class="hero-copy">
+        Craving a home base for cold pours and country energy? Same here.
+        <strong>Oak Barrel Taproom</strong> will be the home base for Central Valley regulars, friends,
+        and new visitors who love a heavy pour and a warm welcome.
+      </p>
+    </header>
+
+    <nav class="tabs">
+      <a href="#tap-list" class="tab-pill">Tap List</a>
+      <a href="#merch" class="tab-pill">Merch</a>
+      <a href="#founders" class="tab-pill">Founders</a>
+      <a href="#events" class="tab-pill">Events</a>
+      <a href="#story" class="tab-pill">Story</a>
     </nav>
 
-    <!-- MAIN -->
-    <div class="main">
-      <!-- LEFT -->
-      <section>
-        <div class="chip">
-          <span class="chip-dot"></span>
-          Craft beer · Country vibes · Community
-        </div>
-
-        <div class="coming-pill">
-          Coming Soon — Fresno / Clovis
-        </div>
-
-        <h1 class="hero-title">
-          <span class="hero-soft">A neighborhood taproom</span>
-          <span class="hero-gold">BUILT FOR REGULARS</span>
-        </h1>
-
-        <p class="hero-sub">
-          Craving a home base for cold pours and country energy? Same here.
-          <strong>Oak Barrel Taproom</strong> will be the home base for
-          Central Valley regulars, friends, and new visitors who love a heavy
-          pour and warm welcome.
-        </p>
-
-        <div class="cta-row">
-          <button class="btn-solid" type="button">Preview Tap List</button>
-          <button class="btn-ghost" type="button">Founders Club Info</button>
-        </div>
-
-        <p class="phase-note">
-          Phase 1: <strong>Brand &amp; Foundation</strong> — locking in the name,
-          story, and community before the doors ever open.
-        </p>
-      </section>
-
-      <!-- RIGHT -->
-      <aside>
-        <div class="bar-card" aria-hidden="true">
-          <div class="bar-shelves">
-            <div class="bottle"></div>
-            <div class="bottle"></div>
-            <div class="bottle"></div>
-            <div class="bottle"></div>
-            <div class="bottle"></div>
-          </div>
-
-          <div class="tap-block">
-            <div class="tap-row">
-              <div class="tap"></div>
-              <div class="tap"></div>
-              <div class="tap"></div>
-              <div class="tap"></div>
-            </div>
-          </div>
-
-          <div class="tag-columns">
-            <div>
-              <div class="tag-label">Signature vibe</div>
-              <div class="tag-value">Pouring Country Strong</div>
-            </div>
-            <div>
-              <div class="tag-label">Founders Section</div>
-              <div class="tag-value">12 Founder Mugs · Lifetime perks</div>
-            </div>
-          </div>
-
-          <div class="founders-card">
-            <div class="founders-title">Founders Club</div>
-            <strong>Day-one supporters get first pour.</strong>
-            <p>
-              Early access to soft openings, merch drops, and your name etched
-              into Oak Barrel Taproom history.
-            </p>
-          </div>
-        </div>
-      </aside>
+    <div class="cta-row">
+      <button class="btn-main">Preview Tap List</button>
+      <button class="btn-outline">Founders Club Info</button>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <span>Oak Barrel Taproom · Central Valley, California</span>
-      <span>Brand motto: <strong>Pouring Country Strong</strong></span>
+    <main>
+      <article class="phase-card">
+        <div class="phase-label">Phase 1: Brand & Foundation</div>
+        <div class="phase-title">Locking in the name, story, and community before the doors ever open.</div>
+
+        <p class="phase-copy">
+          Before the first pint is poured, we’re setting the tone for what Oak Barrel Taproom will feel like:
+          country-strong pours, familiar faces, and a place that already feels like “your spot” from day one.
+        </p>
+
+        <div class="meta-row">
+          <div class="meta-block">
+            <div class="meta-heading">Signature Vibe</div>
+            <div class="meta-value">Pouring Country Strong</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-heading">Founders Section</div>
+            <div class="meta-value">12 Founder Mugs · Lifetime perks</div>
+          </div>
+        </div>
+
+        <div class="founders-card" id="founders">
+          <div class="founders-label">Founders Club</div>
+          <div class="founders-title">Day-one supporters get first pour.</div>
+          <p class="founders-text">
+            Early access to soft openings, merch drops, and your name etched into Oak Barrel Taproom history.
+            <strong>Founders get treated like family for life.</strong>
+          </p>
+        </div>
+      </article>
+
+      <section id="tap-list" class="anchor"></section>
+      <section id="merch" class="anchor"></section>
+      <section id="events" class="anchor"></section>
+      <section id="story" class="anchor"></section>
+    </main>
+
+    <footer>
+      <div class="brand-line">
+        Oak Barrel Taproom · Central Valley, California
+      </div>
+      <div class="motto">Brand motto: Pouring Country Strong</div>
     </footer>
+
   </div>
 </body>
 </html>
